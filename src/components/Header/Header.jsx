@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -8,6 +8,9 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import ImageSearchIcon from "@mui/icons-material/ImageSearch";
 import SearchIcon from "@mui/icons-material/Search";
+
+import { searchImage } from "../../store/actions";
+import { useDispatch } from "react-redux";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -52,6 +55,19 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Header = () => {
+  const [value, setValue] = useState("");
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    const input = e.target.value;
+    setValue(input);
+  };
+  const handleSubmit = (e) => {
+    if (e.keyCode === 13) {
+      // console.log("value", e.target.value);
+      dispatch(searchImage(value));
+    }
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
@@ -80,6 +96,9 @@ const Header = () => {
             <StyledInputBase
               placeholder="what are you looking for?"
               inputProps={{ "aria-label": "search" }}
+              value={value}
+              onChange={handleChange}
+              onKeyDown={handleSubmit}
             />
           </Search>
         </Toolbar>
