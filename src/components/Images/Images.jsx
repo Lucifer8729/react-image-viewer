@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
+import { downloadImage } from "./utils";
 
 const itemData = [
   {
@@ -371,6 +372,9 @@ const Images = () => {
                 bgcolor: "#4dabf5",
               },
               boxShadow: 24,
+            }}
+            onClick={() => {
+              downloadImage(open.image, false);
             }}
           >
             <FileDownloadIcon sx={{ color: "white" }} />
