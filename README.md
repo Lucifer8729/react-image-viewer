@@ -66,7 +66,7 @@ This is an example of how to list things you need to use the software and how to
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/Lucifer8729/react-emoji-search-app.git
+   git clone https://github.com/Lucifer8729/react-image-viewer.git
    ```
 2. Install NPM packages in client as well as server directory
    ```sh
